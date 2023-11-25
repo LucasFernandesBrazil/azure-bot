@@ -8,7 +8,7 @@ export class AppService {
     return process.env.URL_WEBHOOK_DISCORD;
   }
 
-  handlePullRequest(pullRequestDto: PullRequestDto): string {
+  handlePullRequest(pullRequestDto: PullRequestDto): Promise<string> {
     const webhookUrl = `https://${process.env.URL_WEBHOOK_DISCORD}`;
     const maxRetries = 3;
     let retryCount = 0;
@@ -52,13 +52,10 @@ export class AppService {
       }
     };
   
-    try {
-      sendRequest();
-      return 'Ok';
-    } catch (error) {
+    return sendRequest().then(() => 'Ok').catch((error) => {
       console.error(`Erro final: ${error.message}`);
-      return 'Erro';
-    }
-  }
+      throw error;
+    });
+  }  
   
 }

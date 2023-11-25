@@ -7,8 +7,14 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  handlePullRequest(@Body() pullRequestDto: PullRequestDto): string {
-    return this.appService.handlePullRequest(pullRequestDto);
+  async handlePullRequest(@Body() pullRequestDto: PullRequestDto): Promise<string> {
+    try {
+      const result = await this.appService.handlePullRequest(pullRequestDto);
+      return result;
+    } catch (error) {
+      console.error(`Erro na controller: ${error.message}`);
+      return 'Erro na controller';
+    }
   }
 
   @Get()
