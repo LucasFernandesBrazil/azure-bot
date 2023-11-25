@@ -14,8 +14,19 @@ export class AppService {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"content":pullRequestDto.id,"embeds":null,"attachments":[]}),
-    }).then(res => {
+      body: JSON.stringify({
+        content: null,
+        embeds: [
+          {
+            title: 'Solicitação de CODE REVIEW',
+            description: `Repositório: ${pullRequestDto.resource.repository.name}\nBranch: ${pullRequestDto.resource.sourceRefName}\nAutor: ${pullRequestDto.resource.createdBy.displayName}\n\n${pullRequestDto.detailedMessage.markdown}`,
+            color: 776715,
+            author: { name: 'Pull Request criado' },
+          },
+        ],
+        attachments: [],
+      }),
+    }).then((res) => {
       return res.json();
     });
 
