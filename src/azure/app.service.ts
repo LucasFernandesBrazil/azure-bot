@@ -15,7 +15,7 @@ export class AppService {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"content":pullRequestDto.message,"embeds":null,"attachments":[]}),
+      body: JSON.stringify({"content":pullRequestDto.id,"embeds":null,"attachments":[]}),
     }).then(res => {
       return res.json();
     });
