@@ -7,14 +7,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  handlePullRequest(): string {
-    return this.appService.handlePullRequest();
+  handlePullRequest(@Body() pullRequestDto: PullRequestDto): string {
+    return this.appService.handlePullRequest(pullRequestDto);
   }
 
   @Get()
-  getHello(@Body() pullRequestDto: PullRequestDto) {
-    console.log(pullRequestDto)
-    return JSON.stringify(pullRequestDto);
-    /* return this.appService.getHello(); */
+  getHello(): string {
+    return this.appService.getHello();
   }
 }
