@@ -14,6 +14,7 @@ export class AppController {
   @Get()
   getHello(@Body() pullRequestDto: PullRequestDto) {
     console.log(pullRequestDto)
+    return JSON.stringify(pullRequestDto);
     /* return this.appService.getHello(); */
   }
 }
