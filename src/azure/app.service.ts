@@ -4,8 +4,8 @@ import PullRequestDto from './dtos/pull-request.dto';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getWebHook(): string {
+    return process.env.URL_WEBHOOK_DISCORD;
   }
 
   handlePullRequest(pullRequestDto: PullRequestDto): string {
