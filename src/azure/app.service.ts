@@ -28,7 +28,7 @@ export class AppService {
               embeds: [
                 {
                   title: 'Solicitação de CODE REVIEW',
-                  description: `**Repositório**: ${pullRequestDto.resource.repository.name}\n**Propõe**: ${remetente[2]}  :arrow_right:  ${destino[2]}\n**Autor**: ${pullRequestDto.resource.createdBy.displayName}\n\n[Pull Request link](${pullRequestDto.resource._links.web.href})`,
+                  description: `**Repositório**: ${pullRequestDto.resource.repository.name}\n**Propõe**: ${remetente[2]}  :arrow_right:  ${destino[2]}\n**Autor**: ${pullRequestDto.resource.createdBy.displayName}\n\n**Descrição**: ${pullRequestDto.resource.title}\n[Pull Request link](${pullRequestDto.resource._links.web.href})`,
                   color: 776715,
                   author: { name: 'Pull Request criado' },
                 },
